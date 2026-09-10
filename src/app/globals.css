@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-surface text-brand-dark antialiased;
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Décale les ancres pour tenir compte de la navigation fixe */
+  :target {
+    scroll-margin-top: 6rem;
+  }
+
+  /* États de focus visibles et homogènes pour la navigation clavier */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-white rounded-md;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-container px-5 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-accent;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold leading-tight tracking-tight text-brand-dark sm:text-4xl;
+  }
+}
+
+@layer utilities {
+  /* Fond pointillé discret, rappel des visuels produit */
+  .bg-dotted {
+    background-image: radial-gradient(#dbe6f4 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+}
